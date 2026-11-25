@@ -2,7 +2,10 @@
   <h1 align="center">🔐 ample-chat</h1>
 </p>
 
-> **Encrypted, RAM-only terminal chat. No disks. No databases. No logs. Zero-knowledge authentication.**
+<p align="center">
+  <b>Encrypted, RAM-only terminal chat.</b><br>
+  No disks. No databases. No logs. Zero-knowledge authentication.
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Rust-100%25%20Safe-orange?style=for-the-badge&logo=rust" alt="Rust">
@@ -19,13 +22,22 @@
 </p>
 
 <p align="center">
-  <b>🛡️ Privacy-first</b> •
-  <b>⚡ High-performance</b> •
-  <b>🔒 End-to-end encrypted</b> •
-  <b>💾 Zero persistence</b>
+  <sub>
+    This project is an independent Rust implementation inspired by the ideas and
+    privacy-focused approach of <b>cmd-chat</b>.
+  </sub>
+</p>
+
+<p align="center">
+  💡 Inspired by
+  <a href="https://github.com/diorwave/cmd-chat">
+    <b>diorwave/cmd-chat</b>
+  </a>
 </p>
 
 ---
+
+> **Privacy-first • High-performance • End-to-end encrypted • Zero persistence**
 
 `ample-chat` is a high-performance, memory-only terminal chat application written in **100% safe, idiomatic Rust**.
 
@@ -42,7 +54,6 @@ The original `cmd-chat` claimed to be "peer-to-peer / no central server". In tec
 │  Client A   │ ──── E2E Ciphertext ──►│  ample-chat Relay    │─── E2E Ciphertext ────►│  Client B   │
 │   (Alice)   │ ◄──── E2E Ciphertext ──│  (In-Memory Server)  │◄── E2E Ciphertext ─────│    (Bob)    │
 └─────────────┘                         └──────────────────────┘                         └─────────────┘
-      │                                           │                                           │
       │                                           │                                           │
       ▼                                           ▼                                           ▼
  Room Key Derived                         Stores RAM Ciphertext                       Room Key Derived
@@ -199,7 +210,6 @@ Download the pre-compiled binary for your architecture from the **GitHub Release
 - 🪟 Windows — x86_64 msvc
 
 ```bash
-# Example on Linux
 tar -xzf ample-chat-0.1.0-x86_64-unknown-linux-musl.tar.gz
 
 chmod +x ample-chat-0.1.0-x86_64-unknown-linux-musl/ample-chat
@@ -351,7 +361,7 @@ Before merging into `main`, GitHub repository branch protection rules must requi
 
 `ample-chat` is licensed under the **MIT License**.
 
-This project is a clean-room Rust implementation inspired by and based on `cmd-chat` by **diorwave**, originally licensed under the MIT License.
+This project is an independent Rust implementation inspired by and based on the ideas of [`cmd-chat`](https://github.com/diorwave/cmd-chat) by **diorwave**, originally licensed under the MIT License.
 
 ---
 
