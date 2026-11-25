@@ -2,7 +2,7 @@
 
 > **Encrypted, RAM-only terminal chat.** No disks. No databases. No logs. Zero-knowledge authentication.
 
-`ample-chat` is a high-performance, memory-only terminal chat application written in 100% safe, idiomatic Rust. It is an enhanced, security-hardened port of the open-source project [cmd-chat](https://github.com/diorwave/cmd-chat).
+`ample-chat` is a high-performance, memory-only terminal chat application written in 100% safe, idiomatic Rust.
 
 ---
 
