@@ -1,6 +1,6 @@
 # Multi-stage Dockerfile for ample-chat
 # Stage 1: Build static musl binary
-FROM rust:1.80-alpine AS builder
+FROM rust:alpine AS builder
 
 WORKDIR /usr/src/ample-chat
 

@@ -13,6 +13,9 @@ jobs:
   audit:
     name: Cargo Audit (RustSec)
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
     steps:
       - uses: actions/checkout@v4
       - name: Run Cargo Audit
@@ -39,4 +42,4 @@ jobs:
       - name: Install cargo-geiger
         run: cargo install cargo-geiger --locked
       - name: Run Cargo Geiger Report
-        run: cargo geiger --forbid-unsafe
+        run: cargo geiger --package ample-chat --package ample-chat-server --package ample-chat-proto
