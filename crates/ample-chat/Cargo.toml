@@ -1,0 +1,36 @@
+[package]
+name = "ample-chat"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Encrypted, RAM-only terminal chat client and CLI"
+
+[dependencies]
+ample-chat-proto.workspace = true
+ample-chat-server = { workspace = true, features = ["tls"] }
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+clap = { version = "4.5", features = ["derive", "env"] }
+ratatui = "0.28"
+crossterm = { version = "0.28", features = ["event-stream"] }
+tokio-tungstenite = { version = "0.24", features = ["rustls-tls-native-roots"] }
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "json"] }
+rpassword = "7.3"
+zeroize.workspace = true
+secrecy.workspace = true
+base64.workspace = true
+chrono.workspace = true
+rand.workspace = true
+futures-util = "0.3"
+
+[[bin]]
+name = "ample-chat"
+path = "src/main.rs"
