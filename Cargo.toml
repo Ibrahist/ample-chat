@@ -1,0 +1,34 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/ample-chat-proto",
+    "crates/ample-chat-server",
+    "crates/ample-chat",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+authors = ["ample-chat contributors"]
+license = "MIT"
+repository = "https://github.com/ample-chat/ample-chat"
+homepage = "https://github.com/ample-chat/ample-chat"
+readme = "README.md"
+
+[workspace.dependencies]
+ample-chat-proto = { path = "crates/ample-chat-proto" }
+ample-chat-server = { path = "crates/ample-chat-server" }
+tokio = { version = "1.38", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "1.0"
+anyhow = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+zeroize = { version = "1.8", features = ["derive"] }
+secrecy = { version = "0.8", features = ["serde"] }
+base64 = "0.22"
+subtle = "2.5"
+rand = "0.8"
+chrono = { version = "0.4", features = ["serde"] }

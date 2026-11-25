@@ -1,0 +1,11 @@
+target/
+**/*.rs.bk
+.git/
+.github/
+fuzz/target/
+fuzz/corpus/
+fuzz/artifacts/
+*.tar.gz
+*.zip
+*.sha256
+.env

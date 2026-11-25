@@ -1,0 +1,9 @@
+/target
+**/*.rs.bk
+.env
+*.tar.gz
+*.zip
+*.sha256
+fuzz/corpus/
+fuzz/artifacts/
+fuzz/target/
