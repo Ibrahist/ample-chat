@@ -1,4 +1,6 @@
-# 🔐 ample-chat
+<p align="center">
+  <h1 align="center">🔐 ample-chat</h1>
+</p>
 
 > **Encrypted, RAM-only terminal chat. No disks. No databases. No logs. Zero-knowledge authentication.**
 
