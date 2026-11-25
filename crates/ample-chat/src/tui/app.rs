@@ -1,5 +1,5 @@
 use ample_chat_proto::UserSummary;
-use crossterm::event::{KeyCode, KeyEvent, KeyModifiers};
+use crossterm::event::{KeyCode, KeyEvent, KeyEventKind, KeyModifiers};
 
 use crate::client::DisplayMessage;
 
@@ -32,6 +32,11 @@ impl App {
 
     /// Handles keyboard input. Returns `Some(message_to_send)` when Enter is pressed with text.
     pub fn handle_key(&mut self, key: KeyEvent) -> Option<String> {
+        // Only process key press events (ignore key release events on Windows)
+        if key.kind != KeyEventKind::Press {
+            return None;
+        }
+
         // Handle Ctrl+C or Esc to quit
         if key.code == KeyCode::Esc
             || (key.modifiers.contains(KeyModifiers::CONTROL) && key.code == KeyCode::Char('c'))
@@ -109,5 +114,44 @@ impl App {
 
     pub fn remove_user(&mut self, user_id: &str) {
         self.users.retain(|u| u.user_id != user_id);
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_handle_key_ignores_release_events() {
+        let mut app = App::new("alice", false);
+
+        // Press 'a'
+        let press = KeyEvent::new(KeyCode::Char('a'), KeyModifiers::NONE);
+        app.handle_key(press);
+        assert_eq!(app.input, "a");
+
+        // Release 'a' (sent by Windows console)
+        let mut release = KeyEvent::new(KeyCode::Char('a'), KeyModifiers::NONE);
+        release.kind = KeyEventKind::Release;
+        app.handle_key(release);
+
+        // Must still be "a", NOT "aa"!
+        assert_eq!(app.input, "a");
+    }
+
+    #[test]
+    fn test_handle_key_enter_returns_message() {
+        let mut app = App::new("alice", false);
+
+        let press_h = KeyEvent::new(KeyCode::Char('h'), KeyModifiers::NONE);
+        let press_i = KeyEvent::new(KeyCode::Char('i'), KeyModifiers::NONE);
+        let press_enter = KeyEvent::new(KeyCode::Enter, KeyModifiers::NONE);
+
+        app.handle_key(press_h);
+        app.handle_key(press_i);
+        let msg = app.handle_key(press_enter);
+
+        assert_eq!(msg, Some("hi".to_string()));
+        assert_eq!(app.input, "");
     }
 }

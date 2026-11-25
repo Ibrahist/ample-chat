@@ -7,7 +7,7 @@ pub use terminal::{init_terminal, restore_terminal};
 
 use std::{sync::Arc, time::Duration};
 
-use crossterm::event::{Event, EventStream};
+use crossterm::event::{Event, EventStream, KeyEventKind};
 use futures_util::StreamExt;
 use tokio::sync::mpsc;
 
@@ -81,7 +81,7 @@ pub async fn run_client_tui(
             // User terminal input
             maybe_event = event_stream.next() => {
                 match maybe_event {
-                    Some(Ok(Event::Key(key_event))) => {
+                    Some(Ok(Event::Key(key_event))) if key_event.kind == KeyEventKind::Press => {
                         if let Some(msg_to_send) = app.handle_key(key_event) {
                             let _ = outgoing_tx.send(msg_to_send).await;
                         }
