@@ -37,7 +37,10 @@
 
 ---
 
-> **Privacy-first • High-performance • End-to-end encrypted • Zero persistence**
+
+<p align="center">
+  > **Privacy-first • High-performance • End-to-end encrypted • Zero persistence**
+</p>
 
 `ample-chat` is a high-performance, memory-only terminal chat application written in **100% safe, idiomatic Rust**.
 
